@@ -1,3 +1,5 @@
+/cmd/external/external
+/cmd/helloer/helloer
 # Binaries for programs and plugins
 *.exe
 *.exe~

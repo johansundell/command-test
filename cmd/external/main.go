@@ -7,8 +7,24 @@ import (
 )
 
 func main() {
+	// Run first program
 	command := "./added"
 	dir := "/home/johan/go/src/github.com/johansundell/command-test/cmd/added"
+
+	if err := runCommand(command, dir); err != nil {
+		log.Fatal(err)
+	}
+
+	// Run second program
+	command = "./helloer"
+	dir = "/home/johan/go/src/github.com/johansundell/command-test/cmd/helloer"
+	if err := runCommand(command, dir); err != nil {
+		log.Fatal(err)
+	}
+
+}
+
+func runCommand(command, dir string) error {
 	args := []string{}
 	cmd := exec.Command(command, args...)
 	cmd.Dir = dir
@@ -18,6 +34,7 @@ func main() {
 	cmd.Stdin = os.Stdin
 
 	if err := cmd.Run(); err != nil {
-		log.Fatal(err)
+		return err
 	}
+	return nil
 }
